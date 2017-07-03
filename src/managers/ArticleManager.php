@@ -16,7 +16,7 @@ class ArticleManager
 	
 	public function loadDBFactory()
 	{
-		$this->db = require __DIR__.'./etc/DBFactory.php';
+		$this->db = require __DIR__.'./../../etc/DBFactory.php';
 	}
 	
 	public function ajouterArticle(Article $article)
