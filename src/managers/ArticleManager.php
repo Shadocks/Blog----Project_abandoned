@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib;
+namespace Lib\managers;
 
 use Core\DBFactory;
 
@@ -8,15 +8,9 @@ class ArticleManager
 {
 	private $db;
 
-	public function __construct()
+	public function __construct(DBFactory $db)
 	{
-		$this->loadDBFactory();
-		$this->db = new DBFactory();
-	}
-	
-	public function loadDBFactory()
-	{
-		$this->db = require __DIR__.'./../../etc/DBFactory.php';
+		$this->db = $db->getConnexion();
 	}
 	
 	public function ajouterArticle(Article $article)
@@ -41,7 +35,7 @@ class ArticleManager
 		$articles = [];
 
 		$art = $this->db->query('
-			SELECT titre, chapo, date_creation, date_modification, contenu, auteur 
+			SELECT id, titre, chapo, date_creation, date_modification, contenu, auteur 
 			FROM article 
 			ORDER BY id DESC
 		');
@@ -55,8 +49,8 @@ class ArticleManager
 
 	public function getArticle($db)
 	{
-		$art = $this->db->prepare('SELECT * FROM article WHERE id = ?');
-		$art->execute(array($_GET['id']));
+		$art = $this->db->prepare('SELECT * FROM article WHERE id = 1');
+		$art->execute();
 
 		while($donnees = $art->fetch()){
 			$article = $donnees;
@@ -103,8 +97,3 @@ class ArticleManager
 		$req->execute();
 	}	
 }
-
-$am = new ArticleManager();
-var_dump($am);
-
-$am->getArticles();
