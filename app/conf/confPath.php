@@ -1,5 +1,5 @@
 <?php
 
 return [
-	'views_folder' => __DIR__ . './../../templates/',
+	'views_folder' => __DIR__ . './../../templates',
 ];

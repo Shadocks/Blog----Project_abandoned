@@ -20,10 +20,10 @@ class DBFactory
 	public function getConnexion()
 	{
 		try {
-			$db = new \PDO('mysql:host=' . $this->conf['machine'] . '; dbname=' . $this->conf['db'] . ';charset=utf8', $this->conf['user'], $this->conf['password'], array(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION));
+			return new \PDO('mysql:host=' . $this->conf['machine'] . '; dbname=' . $this->conf['db'] . ';charset=utf8', $this->conf['user'], $this->conf['password'], array(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION));
 		} catch (Exception $e) {
 			die('<p><strong>Erreur : </strong>' .$e->getMessage(). '</p>');
 		}
-		return $db;
 	}
 }
+
