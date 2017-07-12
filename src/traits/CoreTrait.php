@@ -2,6 +2,8 @@
 
 namespace  Lib\traits;
 
+use Core\DBFactory;
+
 /**
 * Classe CoreTrait
 */ 
@@ -21,6 +23,11 @@ trait CoreTrait
 	public function getData()
 	{
 		$this->data = require __DIR__ . './../../app/conf/confPath.php';
+	}
+
+	public function getDB()
+	{
+		return new DBFactory();
 	}
 
 	public function getTwig()
