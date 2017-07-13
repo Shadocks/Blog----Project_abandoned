@@ -17,7 +17,19 @@ class Router
 				$controller = new Controller();
 				return $controller->articlesAction();
 				break;
-			case $_SERVER['REQUEST_URI'] === '/article/detail':
+			case $_SERVER['REQUEST_URI'] === '/formulaire':
+				$controller = new controller();
+				return $controller->formAction();
+				break;
+			case $_SERVER['REQUEST_URI'] === '/article/ajouter':
+				$controller = new controller();
+				return $controller->addArticleAction();
+				break;
+			case $_SERVER['REQUEST_URI'] === '/article/article/modifier?id=' . $_GET['id']:
+				$controller = new controller();
+				return $controller->updateArticleAction();
+				break;
+			case $_SERVER['REQUEST_URI'] === '/article/detail?id=' . $_GET['id']:
 				$controller = new Controller();
 				return $controller->articleDetailAction();
 				break;
