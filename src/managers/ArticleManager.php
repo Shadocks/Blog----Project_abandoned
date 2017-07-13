@@ -47,10 +47,10 @@ class ArticleManager
 		return $articles;
 	}
 
-	public function getArticle($db)
+	public function getArticle()
 	{
-		$art = $this->db->prepare('SELECT * FROM article WHERE id = 1');
-		$art->execute();
+		$art = $this->db->prepare('SELECT * FROM article WHERE id = ?');
+		$art->execute(array($_GET['id']));
 
 		while($donnees = $art->fetch()){
 			$article = $donnees;
@@ -62,11 +62,7 @@ class ArticleManager
 	public function modificationArticle(Article $article)
 	{
 
-		// Requête préparée
-
 		$req = $this->db->prepare('UPDATE article SET titre = :titre, chapo = :chapo, date_creation = :datec, date_modification = :datem, contenu = :contenu, auteur = :auteur WHERE id = :id');
-
-		// Association des valeurs aux paramètres
 
 		$req->bindValue(':titre', $article->getTitre(), PDO::PARAM_STR);
 		$req->bindValue(':chapo', $article->getChapo(), PDO::PARAM_STR);
@@ -76,23 +72,15 @@ class ArticleManager
 		$req->bindValue(':auteur', $article->getAuteur(), PDO::PARAM_STR);
 		$req->bindValue(':id', $article->getId(), PDO::PARAM_STR);
 
-		// Execution de la requête
-
 		$req->execute();
 	}
 
 	public function supprimerArticle(Article $article)
 	{
 
-		// Requête préparée
-
 		$req = $this->db->prepare('DELETE * FROM article WHERE id = :id LIMIT 1');
 
-		// Association 
-
 		$req->bindValue(':id', $article->getId(), PDO::PARAM_INT);
-
-		// Execution de la requête
 
 		$req->execute();
 	}	

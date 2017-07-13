@@ -1,5 +1,14 @@
 {% extends 'layout.html.twig' %}
 
-{% block body %} <p>Page des articles</p> {% endblock %}
+{% block body %} <p>Page des articles</p> 
+
+	{% for article in articles %}
+		<p>{{ article.titre }}</p>
+		<p>{{ article.date_modification }}</p>
+		<p>{{ article.chapo }}</p>
+		<a href="/article/detail?id={{ article.id }}" >Voir détail</a>
+	{% endfor %}
+
+{% endblock %}
 
 {% block title %} MBBlog {% endblock %}

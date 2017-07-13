@@ -1,5 +1,23 @@
 {% extends 'layout.html.twig' %}
 
-{% block body %} <p>Page d'un article</p> {% endblock %}
+{% block body %} <p><strong>Page d'un article</strong></p>
+
+	<p>{{ article.titre }}</p>
+    <p>{{ article.chapo }}</p>
+    <p>{{ article.date_creation }}</p>
+    <p>{{ article.date_modification }}</p>
+    <p>{{ article.contenu }}</p>
+    <p>{{ article.auteur }}</p>
+    <a href="article/modifier?id={{ article.id }}">Modifier l'article</a>
+
+    <hr />
+
+    {% for commentaire in commentaires %}
+		<p>{{ commentaire.auteur }}</p>
+		<p>{{ commentaire.contenu }}</p>
+		<p>{{ commentaire.date_creation }}</p>
+	{% endfor %}
+
+{% endblock %}
 
 {% block title %} MBBlog {% endblock %}
