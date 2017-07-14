@@ -13,7 +13,14 @@ class Router
 				$controller = new Controller();
 				return $controller->indexAction();
 				break;
-			case $_SERVER['REQUEST_URI'] === '/articles':
+			
+		}
+	}
+}
+
+
+/*
+case $_SERVER['REQUEST_URI'] === '/articles':
 				$controller = new Controller();
 				return $controller->articlesAction();
 				break;
@@ -29,9 +36,4 @@ class Router
 				$controller = new Controller();
 				return $controller->articleDetailAction();
 				break;
-		}
-	}
-}
-
-
-
+				*/

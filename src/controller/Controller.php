@@ -21,7 +21,11 @@ class Controller extends ControllerTrait
 
 	public function indexAction()
 	{
-		echo $this->getTwig()->render('index.html.twig');
+			if (isset($_POST['nom'])) {
+				mail('mickael.bardeau@laposte.net', 'Contact via blog', $_POST['message']);
+			} else {
+				echo $this->getTwig()->render('index.html.twig');
+			}
 	}
 
 	public function articlesAction()
