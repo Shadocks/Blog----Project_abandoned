@@ -1,7 +1,14 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %} 
-	<p>Page pour rédiger un article</p>
+	<form method="post" action="ecrireArticle.html.twig">
+		<p>Page pour rédiger un article</p>
+			<label for="titre">Titre</label> : <input type="text" name="titre" id="titre" /><br />
+			<label for="chapo">Châpo</label> : <textarea id="chapo"></textarea><br />
+			<label for="auteur">Auteur</label> : <input type="texte" name="auteur" id="auteur"><br />
+			<label for="contenu">Contenu</label> : <textarea id="contenu"></textarea><br />
+			<input type="submit" name="modification">
+	</form>
 {% endblock %}
 
 {% block title %} MBBlog {% endblock %}

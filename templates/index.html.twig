@@ -3,8 +3,22 @@
 {% block body %} 
 	<p>Hello World !</p>
 	<a href="/articles">Liste des articles</a><br />
-	<a href="/formulaire">Me contacter</a><br />
 	<a href="/article/ajouter">Ecrire un article</a><br />
 {% endblock %}
 
-{% block title %} MBBlog {% endblock %}
+{% block title %} 
+	MBBlog 
+{% endblock %}
+
+{% block form %}
+	<form method="post" action="index.html.twig">
+		<fieldset>
+			<legend>Me contacter</legend>
+			<label for="nom">Nom</label> : <input type="text" name="nom" id="nom" required /><br />
+			<label for="prenom">Prénom</label> : <input type="text" name="prenom" id="prenom" required /><br />
+			<label for="mail">Email</label> : <input type="email" name="mail" id="mail" required /><br />
+			<label for="message">Message</label> : <textarea></textarea><br />
+			<input type="submit" name="send" value="Envoyer le formulaire">
+		</fieldset>
+	</form>
+{% endblock %}

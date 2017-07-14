@@ -1,13 +1,13 @@
 {% extends 'layout.html.twig' %}
 
-{% block body %} <p><strong>Page d'un article</strong></p>
-
-	<p>{{ article.titre }}</p>
-    <p>{{ article.chapo }}</p>
-    <p>{{ article.date_creation }}</p>
-    <p>{{ article.date_modification }}</p>
-    <p>{{ article.contenu }}</p>
-    <p>{{ article.auteur }}</p>
+{% block body %}
+    <fieldset>
+        <legend>{{ article.titre }}</legend>
+            <p>{{ article.chapo }}</p>
+            <p>{{ article.date_modification }}</p>
+            <p>{{ article.contenu }}</p>
+            <p>Rédigé par {{ article.auteur }} le {{ article.date_creation }}</p>
+    </fieldset>
     <a href="article/modifier?id={{ article.id }}">Modifier l'article</a>
     	<hr />
     {% for commentaire in commentaires %}
