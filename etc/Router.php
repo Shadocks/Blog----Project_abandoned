@@ -26,8 +26,9 @@ class Router
 				return $controller->addArticleAction();
 				break;
 			case $_SERVER['REQUEST_URI'] === '/article/article/modifier?id=' . $_GET['id']:
+				$id = (int) $_GET['id'];
 				$controller = new controller();
-				return $controller->updateArticleAction();
+				return $controller->updateArticleAction($id);
 				break;
 			case $_SERVER['REQUEST_URI'] === '/article/detail?id=' . $_GET['id']:
 				$controller = new Controller();

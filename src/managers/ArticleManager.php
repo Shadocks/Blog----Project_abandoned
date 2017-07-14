@@ -75,7 +75,7 @@ class ArticleManager
 		$req->execute();
 	}
 
-	public function supprimerArticle(Article $article)
+	public function deleteArticle(Article $article)
 	{
 
 		$req = $this->db->prepare('DELETE * FROM article WHERE id = :id LIMIT 1');

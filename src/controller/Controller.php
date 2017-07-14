@@ -45,6 +45,11 @@ class Controller extends ControllerTrait
 		echo $this->getTwig()->render('formulaire.html.twig');
 	}
 
+	public function addArticleAction()
+	{
+		echo $this->getTwig()->render('ecrireArticle.html.twig');
+	}
+
 	public function updateArticleAction()
 	{
 		$article = $this->manager->getArticle();
