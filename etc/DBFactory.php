@@ -12,7 +12,7 @@ class DBFactory
 		$this->getConnexion();
 	}
 
-	public function loadConf()
+	public function loadDataConnexion()
 	{
 		$this->dataConnexion = require __DIR__. './../app/conf/dataConnexion.php';
 	}
