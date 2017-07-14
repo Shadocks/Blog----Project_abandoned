@@ -40,11 +40,6 @@ class Controller extends ControllerTrait
 		echo '</pre>';
 	}
 
-	public function formAction()
-	{
-		echo $this->getTwig()->render('formulaire.html.twig');
-	}
-
 	public function addArticleAction()
 	{
 		echo $this->getTwig()->render('ecrireArticle.html.twig');

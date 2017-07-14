@@ -17,10 +17,6 @@ class Router
 				$controller = new Controller();
 				return $controller->articlesAction();
 				break;
-			case $_SERVER['REQUEST_URI'] === '/formulaire':
-				$controller = new controller();
-				return $controller->formAction();
-				break;
 			case $_SERVER['REQUEST_URI'] === '/article/ajouter':
 				$controller = new controller();
 				return $controller->addArticleAction();

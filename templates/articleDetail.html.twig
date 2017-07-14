@@ -9,9 +9,7 @@
     <p>{{ article.contenu }}</p>
     <p>{{ article.auteur }}</p>
     <a href="article/modifier?id={{ article.id }}">Modifier l'article</a>
-
-    <hr />
-
+    	<hr />
     {% for commentaire in commentaires %}
 		<p>{{ commentaire.auteur }}</p>
 		<p>{{ commentaire.contenu }}</p>
