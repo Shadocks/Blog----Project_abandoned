@@ -9,10 +9,10 @@
 class Article
 {
 	protected $id;
-	private $_auteur;
-	private $_dateCreation;
-	private $_contenu;
-	private $_articleId;
+	protected $auteur;
+	protected $dateCreation;
+	protected $contenu;
+	protected $articleId;
 
 
 /**
@@ -96,7 +96,7 @@ class Article
 		}
 	}
 
-	public function setArticleId()
+	public function setArticleId($articleId)
 	{
 		return $this->_articleId = $articleId;
 	}

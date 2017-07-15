@@ -17,13 +17,13 @@ class CommentaireManager
 	{
 		$commentaires = [];
 
-		$com = $this->db->prepare('SELECT * FROM commentaire WHERE Article_id AS id = ?');
+		$com = $this->db->prepare('SELECT * FROM commentaire WHERE Article_id = ?');
 		$com->execute(array($_GET['id']));
 
 		while($donnees = $com->fetch()){
-			$commentaires[] = $donnees;
+			$commentaires [] = $donnees;
 		}
-
+		
 		return $commentaires;
 	}
 

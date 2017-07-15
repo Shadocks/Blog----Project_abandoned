@@ -1,13 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %} 
-	<form method="post" action="ecrireArticle.html.twig">
+	<form method="get" action="">
 		<p>Page pour rédiger un article</p>
 			<label for="titre">Titre</label> : <input type="text" name="titre" id="titre" /><br />
-			<label for="chapo">Châpo</label> : <textarea id="chapo"></textarea><br />
+			<label for="chapo">Châpo</label> : <textarea name="chapo" id="chapo"></textarea><br />
 			<label for="auteur">Auteur</label> : <input type="texte" name="auteur" id="auteur"><br />
-			<label for="contenu">Contenu</label> : <textarea id="contenu"></textarea><br />
-			<input type="submit" name="modification">
+			<label for="contenu">Contenu</label> : <textarea name="contenu" id="contenu"></textarea><br />
+			<button type="submit" class="btn btn-primary">Poster</button>
 	</form>
 {% endblock %}
 

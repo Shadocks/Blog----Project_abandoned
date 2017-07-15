@@ -21,11 +21,12 @@ class Controller extends ControllerTrait
 
 	public function indexAction()
 	{
-			if (isset($_POST['nom'])) {
-				mail('mickael.bardeau@laposte.net', 'Contact via blog', $_POST['message']);
-			} else {
-				echo $this->getTwig()->render('index.html.twig');
-			}
+		echo $this->getTwig()->render('index.html.twig');
+				if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['mail'])) {
+					mail('mickael.bardeau@laposte.net', 'Formulaire de contact via blog', $_POST['message']);
+						echo $this->getTwig()->render('test.html.twig');
+				} 
+		var_dump($_POST);
 	}
 
 	public function articlesAction()
@@ -38,15 +39,15 @@ class Controller extends ControllerTrait
 	{
 		$article = $this->manager->getArticle();
 		$commentaires = $this->managerC->getCommentaires();
-		echo $this->getTwig()->render('articleDetail.html.twig', ['article' => $article], ['commentaires' => $commentaires]);
-		echo '<pre>';
-		print_r($commentaires);
-		echo '</pre>';
+		echo $this->getTwig()->render('articleDetail.html.twig', ['article' => $article, 'commentaires' => $commentaires]);
 	}
 
 	public function addArticleAction()
 	{
 		echo $this->getTwig()->render('ecrireArticle.html.twig');
+			if (isset($_GET['titre']) && isset($_GET['chapo']) && isset($_GET['auteur']) && isset($_GET['contenu'])) {
+				$this->manager->ajouterArticle(Article);
+			}
 	}
 
 	public function updateArticleAction()

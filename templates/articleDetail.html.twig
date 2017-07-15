@@ -1,6 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
+    
     <fieldset>
         <legend>{{ article.titre }}</legend>
             <p>{{ article.chapo }}</p>
@@ -8,13 +9,17 @@
             <p>{{ article.contenu }}</p>
             <p>Rédigé par {{ article.auteur }} le {{ article.date_creation }}</p>
     </fieldset>
+
     <a href="article/modifier?id={{ article.id }}">Modifier l'article</a>
-    	<hr />
-    {% for commentaire in commentaires %}
-		<p>{{ commentaire.auteur }}</p>
-		<p>{{ commentaire.contenu }}</p>
-		<p>{{ commentaire.date_creation }}</p>
-	{% endfor %}
+
+    <hr />
+
+        {% for commentaire in commentaires %}
+            <fieldset>
+                <legend>{{ commentaire.auteur }} le {{ commentaire.date_creation }}</legend>
+                    <p>{{ commentaire.contenu }}</p>
+            </fieldset>
+    	{% endfor %}
 
 {% endblock %}
 

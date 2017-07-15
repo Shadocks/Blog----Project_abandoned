@@ -3,6 +3,7 @@
 namespace Lib\managers;
 
 use Core\DBFactory;
+use Lib\entity\Article;
 
 class ArticleManager
 {
@@ -16,14 +17,12 @@ class ArticleManager
 	public function ajouterArticle(Article $article)
 	{
 		$req = $this->db->prepare('
-			INSERT INTO article (titre, chapo, date_creation, date_modification, contenu, auteur) 
-			VALUES (NULL, :titre, :chapo, :datec, :datem, :contenu, :auteur)
+			INSERT INTO article (titre, chapo, date_creation, contenu, auteur) 
+			VALUES (NULL, :titre, :chapo, NOW(), :auteur)
 		');
 
 		$req->bindValue(':titre', $article->getTitre(), PDO::PARAM_STR);
 		$req->bindValue(':chapo', $article->getChapo(), PDO::PARAM_STR);
-		$req->bindValue(':datec', $article->getDateCreation(), PDO::PARAM_STR);
-		$req->bindValue(':datem', $article->getDateModification(), PDO::PARAM_STR);
 		$req->bindValue(':contenu', $article->getContenu(), PDO::PARAM_STR);
 		$req->bindValue(':auteur', $article->getAuteur(), PDO::PARAM_STR);
 
