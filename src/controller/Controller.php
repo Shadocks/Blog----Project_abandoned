@@ -26,7 +26,7 @@ class Controller extends ControllerTrait
 					mail('mickael.bardeau@laposte.net', 'Formulaire de contact via blog', $_POST['message']);
 						echo $this->getTwig()->render('test.html.twig');
 				} 
-		var_dump($_POST);
+		//var_dump($_POST);
 	}
 
 	public function articlesAction()
@@ -46,6 +46,7 @@ class Controller extends ControllerTrait
 	{
 		echo $this->getTwig()->render('ecrireArticle.html.twig');
 			if (isset($_GET['titre']) && isset($_GET['chapo']) && isset($_GET['auteur']) && isset($_GET['contenu'])) {
+
 				$this->manager->ajouterArticle(Article);
 			}
 	}
