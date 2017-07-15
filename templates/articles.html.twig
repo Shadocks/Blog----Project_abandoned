@@ -1,14 +1,33 @@
 {% extends 'layout.html.twig' %}
 
-{% block body %} <p>Page des articles</p> 
+{% block body %}
 
 	{% for article in articles %}
-		<fieldset>
-			<legend>{{ article.titre }}</legend>
-		<p>{{ article.date_modification }}</p>
-		<p>{{ article.chapo }}</p>
-		</fieldset>
-		<a href="/article/detail?id={{ article.id }}">Voir détail</a>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<p>{{ article.titre }}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<p>{{ article.date_modification }}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<p>{{ article.chapo }}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<a href="/article/detail?id={{ article.id }}">Voir le détail de l'article</a>
+				</div>
+			</div>
+		</div>
+		<hr />
+
 	{% endfor %}
 
 {% endblock %}

@@ -1,14 +1,38 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %} 
-	<form method="get" action="">
-		<p>Page pour rédiger un article</p>
-			<label for="titre">Titre</label> : <input type="text" name="titre" id="titre" /><br />
-			<label for="chapo">Châpo</label> : <textarea name="chapo" id="chapo"></textarea><br />
-			<label for="auteur">Auteur</label> : <input type="texte" name="auteur" id="auteur"><br />
-			<label for="contenu">Contenu</label> : <textarea name="contenu" id="contenu"></textarea><br />
-			<button type="submit" class="btn btn-primary">Poster</button>
-	</form>
+	<div class="container">
+		<form method="get" action="">
+			<div class="row">
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label for="titre">Titre</label>
+							<input type="text" name="titre" id="titre" />
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="form-group">
+							<label for="chapo">Châpo</label>
+							<textarea id="chapo" name="chapo" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label for="auteur">Auteur</label>
+							<input type="texte" name="auteur" id="auteur">
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="form-group">
+							<label for="contenu">Contenu</label>
+							<textarea id="contenu" name="contenu" class="form-control"></textarea>
+						</div>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Poster</button>
+		</form>
+	</div>
+	<hr />
 {% endblock %}
 
 {% block title %} MBBlog {% endblock %}

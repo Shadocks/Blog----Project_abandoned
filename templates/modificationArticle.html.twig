@@ -1,14 +1,39 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %} 
-	<form>
-		<p>Page de modification de l'article {{ article.titre }}</p>
-			<label for="titre">Titre</label> : <input type="text" name="titre" id="titre" /><br />
-			<label for="chapo">Châpo</label> : <textarea id="chapo"></textarea><br />
-			<label for="auteur">Auteur</label> : <input type="texte" name="auteur" id="auteur"><br />
-			<label for="contenu">Contenu</label> : <textarea id="contenu"></textarea><br />
-			<input type="submit" name="modification">
-	</form>
+	<div class="container">
+		<form method="post" action="">
+			<p>{{ article.titre }}</p>
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label for="titre">Titre</label>
+							<input type="text" name="titre" id="titre" />
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="form-group">
+							<label for="chapo">Châpo</label>
+							<textarea id="chapo" name="chapo" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label for="auteur">Auteur</label>
+							<input type="texte" name="auteur" id="auteur">
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="form-group">
+							<label for="contenu">Contenu</label>
+							<textarea id="contenu" name="contenu" class="form-control"></textarea>
+						</div>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Modifier l'article</button>
+		</form>
+	</div>
+	<hr/>
 {% endblock %}
 
 {% block title %} MBBlog {% endblock %}

@@ -1,26 +1,22 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    
-    <fieldset>
-        <legend>{{ article.titre }}</legend>
+    <div class="container">
+            <p>{{ article.titre }}</p>
             <p>{{ article.chapo }}</p>
             <p>{{ article.date_modification }}</p>
             <p>{{ article.contenu }}</p>
             <p>Rédigé par {{ article.auteur }} le {{ article.date_creation }}</p>
-    </fieldset>
-
-    <a href="article/modifier?id={{ article.id }}">Modifier l'article</a>
-
-    <hr />
-
+            <a href="article/modifier?id={{ article.id }}">Modifier l'article</a>
+    </div>
+    <hr/>
         {% for commentaire in commentaires %}
-            <fieldset>
+            <fieldset class="container">
                 <legend>{{ commentaire.auteur }} le {{ commentaire.date_creation }}</legend>
                     <p>{{ commentaire.contenu }}</p>
             </fieldset>
     	{% endfor %}
-
+        <hr/>
 {% endblock %}
 
 {% block title %} MBBlog {% endblock %}
