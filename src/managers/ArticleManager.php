@@ -3,7 +3,6 @@
 namespace Lib\managers;
 
 use Core\DBFactory;
-use Lib\entity\Article;
 
 class ArticleManager
 {

@@ -46,8 +46,8 @@ class Controller extends ControllerTrait
 	{
 		echo $this->getTwig()->render('ecrireArticle.html.twig');
 			if (isset($_GET['titre']) && isset($_GET['chapo']) && isset($_GET['auteur']) && isset($_GET['contenu'])) {
-
-				$this->manager->ajouterArticle(Article);
+				$this->manager->ajouterArticle();
+					echo $this->getTwig()->render('test.html.twig');
 			}
 	}
 
