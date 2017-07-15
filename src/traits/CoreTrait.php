@@ -4,15 +4,9 @@ namespace  Lib\traits;
 
 use Core\DBFactory;
 
-/**
-* Classe CoreTrait
-*/ 
-
 trait CoreTrait
 {
-	/** 
-	* @var array
-	*/
+
 	private $data;
 
 	Public function __construct()

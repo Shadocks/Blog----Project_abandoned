@@ -3,10 +3,12 @@
 namespace Lib\managers;
 
 use Core\DBFactory;
+use Lib\entity\Article;
 
 class ArticleManager
 {
 	private $db;
+	private $article;
 
 	public function __construct(DBFactory $db)
 	{
