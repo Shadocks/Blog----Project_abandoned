@@ -8,26 +8,15 @@ use Lib\entity\Article;
 class ArticleManager
 {
 	private $db;
-	private $article;
 
 	public function __construct(DBFactory $db)
 	{
 		$this->db = $db->getConnexion();
 	}
-	
-	public function ajouterArticle(Article $article)
+
+	public function buildArticle(array $value)
 	{
-		$req = $this->db->prepare('
-			INSERT INTO article (titre, chapo, date_creation, contenu, auteur) 
-			VALUES (NULL, :titre, :chapo, NOW(), :auteur)
-		');
-
-		$req->bindValue(':titre', $article->getTitre(), PDO::PARAM_STR);
-		$req->bindValue(':chapo', $article->getChapo(), PDO::PARAM_STR);
-		$req->bindValue(':contenu', $article->getContenu(), PDO::PARAM_STR);
-		$req->bindValue(':auteur', $article->getAuteur(), PDO::PARAM_STR);
-
-		$req->execute();
+		return $article = new Article($value);
 	}
 
 	public function getArticles()
@@ -59,28 +48,44 @@ class ArticleManager
 		return $article;
 	}
 
-	public function modificationArticle(Article $article)
+	public function ajouterArticle($article)
 	{
+		$req = $this->db->prepare('
+			INSERT INTO article (titre, chapo, date_creation, contenu, auteur) 
+			VALUES (:titre, :chapo, NOW(), :contenu, :auteur)
+		');
 
-		$req = $this->db->prepare('UPDATE article SET titre = :titre, chapo = :chapo, date_creation = :datec, date_modification = :datem, contenu = :contenu, auteur = :auteur WHERE id = :id');
-
-		$req->bindValue(':titre', $article->getTitre(), PDO::PARAM_STR);
-		$req->bindValue(':chapo', $article->getChapo(), PDO::PARAM_STR);
-		$req->bindValue(':datec', $article->getDateCreation(), PDO::PARAM_STR);
-		$req->bindValue(':datem', $article->getDateModification(), PDO::PARAM_STR);
-		$req->bindValue(':contenu', $article->getContenu(), PDO::PARAM_STR);
-		$req->bindValue(':auteur', $article->getAuteur(), PDO::PARAM_STR);
-		$req->bindValue(':id', $article->getId(), PDO::PARAM_STR);
+		$req->bindValue(':titre', $article->getTitre(), \PDO::PARAM_STR);
+		$req->bindValue(':chapo', $article->getChapo(), \PDO::PARAM_STR);
+		$req->bindValue(':contenu', $article->getContenu(), \PDO::PARAM_STR);
+		$req->bindValue(':auteur', $article->getAuteur(), \PDO::PARAM_STR);
 
 		$req->execute();
 	}
 
-	public function deleteArticle(Article $article)
+	public function modificationArticle($article)
+	{
+		$req = $this->db->prepare('
+			UPDATE article
+			SET titre = :titre, chapo = :chapo, contenu = :contenu, auteur = :auteur
+			WHERE id = :id
+			');
+
+		$req->bindValue(':titre', $article->getTitre(), \PDO::PARAM_STR);
+		$req->bindValue(':chapo', $article->getChapo(), \PDO::PARAM_STR);
+		$req->bindValue(':contenu', $article->getContenu(), \PDO::PARAM_STR);
+		$req->bindValue(':auteur', $article->getAuteur(), \PDO::PARAM_STR);
+		$req->bindValue(':id', $article->getId(), \PDO::PARAM_INT);
+
+		$req->execute();
+	}
+
+	public function deleteArticle($article)
 	{
 
 		$req = $this->db->prepare('DELETE * FROM article WHERE id = :id LIMIT 1');
 
-		$req->bindValue(':id', $article->getId(), PDO::PARAM_INT);
+		$req->bindValue(':id', $article->getId(), \PDO::PARAM_INT);
 
 		$req->execute();
 	}	

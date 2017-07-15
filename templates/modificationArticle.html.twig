@@ -3,34 +3,35 @@
 {% block body %} 
 	<div class="container">
 		<form method="post" action="">
-			<p>{{ article.titre }}</p>
 				<div class="row">
 					<div class="col-xs-6">
 						<div class="form-group">
+							<input type="hidden" name="id" id="id" value="{{ article.id }}">
 							<label for="titre">Titre</label>
-							<input type="text" name="titre" id="titre" />
+							<input type="text" name="titre" id="titre" value="{{ article.titre }}" />
 						</div>
 					</div>
 					<div class="col-xs-12">
 						<div class="form-group">
 							<label for="chapo">Châpo</label>
-							<textarea id="chapo" name="chapo" class="form-control"></textarea>
+							<textarea id="chapo" name="chapo" class="form-control">{{ article.chapo }}</textarea>
 						</div>
 					</div>
 					<div class="col-xs-6">
 						<div class="form-group">
 							<label for="auteur">Auteur</label>
-							<input type="texte" name="auteur" id="auteur">
+							<input type="texte" name="auteur" id="auteur" value="{{ article.auteur }}">
 						</div>
 					</div>
 					<div class="col-xs-12">
 						<div class="form-group">
 							<label for="contenu">Contenu</label>
-							<textarea id="contenu" name="contenu" class="form-control"></textarea>
+							<textarea id="contenu" name="contenu" class="form-control">{{ article.contenu }}</textarea>
 						</div>
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary">Modifier l'article</button>
+				<button type="submit" name="delete" class="btn btn-primary">Supprimer l'article</button>
 		</form>
 	</div>
 	<hr/>

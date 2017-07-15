@@ -14,17 +14,15 @@ class Article
 	protected $contenu;
 	protected $articleId;
 
-
 /**
 * Constructeur
 * @param $donnees array
 * @return void
 */
-	public function __construct(array $donnees)
+	public function __construct(array $commentaire)
 	{
-		$this->hydrate($donnees);
+		$this->hydrate($commentaire);
 	}
-
 
 /**
 * Hydratation

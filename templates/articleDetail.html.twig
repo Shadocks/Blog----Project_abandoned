@@ -7,7 +7,7 @@
             <p>{{ article.date_modification }}</p>
             <p>{{ article.contenu }}</p>
             <p>Rédigé par {{ article.auteur }} le {{ article.date_creation }}</p>
-            <a href="article/modifier?id={{ article.id }}">Modifier l'article</a>
+            <a href="article/modifier?id={{ article.id }}">Modifier ou supprimer l'article</a>
     </div>
     <hr/>
         {% for commentaire in commentaires %}
@@ -16,7 +16,28 @@
                     <p>{{ commentaire.contenu }}</p>
             </fieldset>
     	{% endfor %}
-        <hr/>
+    <hr/>
+    <h4 class="container">Laissez un commentaire</h4>
+    <div class="container">
+        <form method="post" action="">
+            <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="auteur">Nom d'auteur</label>
+                            <input type="text" name="auteur" id="auteur" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="contenu">Message</label>
+                            <textarea id="contenu" name="contenu" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Poster</button>
+        </form>
+    </div>
+    <hr />
 {% endblock %}
 
 {% block title %} MBBlog {% endblock %}
