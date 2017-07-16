@@ -82,7 +82,6 @@ class ArticleManager
 
 	public function deleteArticle($article)
 	{
-
 		$req = $this->db->prepare('DELETE * FROM article WHERE id = :id LIMIT 1');
 
 		$req->bindValue(':id', $article->getId(), \PDO::PARAM_INT);

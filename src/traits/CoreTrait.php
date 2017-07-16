@@ -16,7 +16,7 @@ trait CoreTrait
 
 	public function getData()
 	{
-		$this->data = require __DIR__ . './../../app/conf/confPath.php';
+		$this->data = require __DIR__ . './../../app/conf/pathTemplate.php';
 	}
 
 	public function getDB()

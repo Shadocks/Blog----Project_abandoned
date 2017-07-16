@@ -21,13 +21,17 @@ class Router
 				$controller = new controller();
 				return $controller->addArticleAction();
 				break;
+			case $_SERVER['REQUEST_URI'] === '/article/detail?id=' . $_GET['id']:
+				$controller = new Controller();
+				return $controller->articleDetailAction();
+				break;
 			case $_SERVER['REQUEST_URI'] === '/article/article/modifier?id=' . $_GET['id']:
 				$controller = new controller();
 				return $controller->updateArticleAction();
 				break;
-			case $_SERVER['REQUEST_URI'] === '/article/detail?id=' . $_GET['id']:
-				$controller = new Controller();
-				return $controller->articleDetailAction();
+			case $_SERVER['REQUEST_URI'] === '/article/article/delete?id=' . $_GET['id']:
+				$controller = new controller();
+				return $controller->deleteArticleAction();
 				break;
 		}
 	}

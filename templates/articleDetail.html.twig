@@ -7,7 +7,8 @@
             <p>{{ article.date_modification }}</p>
             <p>{{ article.contenu }}</p>
             <p>Rédigé par {{ article.auteur }} le {{ article.date_creation }}</p>
-            <a href="article/modifier?id={{ article.id }}">Modifier ou supprimer l'article</a>
+            <a href="article/modifier?id={{ article.id }}">Modifier l'article</a>
+            <a href="article/delete?id={{ article.id }}">Supprimmer l'article</a>
     </div>
     <hr/>
         {% for commentaire in commentaires %}
