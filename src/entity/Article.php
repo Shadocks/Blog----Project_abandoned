@@ -103,12 +103,12 @@ class Article
 		}
 	}
 
-	public function setDateCreation($dateCreation)
+	public function setDateCreation(DateTime $dateCreation)
 	{
 		$this->dateCreation = $dateCreation;
 	}
 
-	public function setDateModification($dateModification)
+	public function setDateModification(DateTime $dateModification)
 	{
 		$this->dateModification = $dateModification;
 	}

@@ -6,7 +6,10 @@
             <p>{{ article.chapo }}</p>
             <p>{{ article.date_modification }}</p>
             <p>{{ article.contenu }}</p>
-            <p>Rédigé par {{ article.auteur }} le {{ article.date_creation }}</p>
+            <p>Rédigé par <strong>{{ article.auteur }}</strong> le <strong>{{ article.date_creation }}</strong></p>
+                {% if article.date_modification %}
+                    <p>Cet article a été modifié le <strong>{{ article.date_modification}}</strong></p>
+                {% endif %}
             <a href="article/modifier?id={{ article.id }}">Modifier l'article</a>
             <a href="article/delete?id={{ article.id }}">Supprimmer l'article</a>
     </div>

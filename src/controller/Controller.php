@@ -6,7 +6,6 @@ use Lib\controller\core\ControllerTrait;
 use Lib\managers\ArticleManager;
 use Lib\managers\CommentaireManager;
 
-
 class Controller extends ControllerTrait
 {
 	private $manager;
@@ -40,9 +39,6 @@ class Controller extends ControllerTrait
 		$article = $this->manager->getArticle();
 			$commentaires = $this->managerC->getCommentaires();
 				echo $this->getTwig()->render('articleDetail.html.twig', ['article' => $article, 'commentaires' => $commentaires]);
-					echo '<pre>';
-					var_dump($article);
-					echo '</pre>';
 	}
 
 	public function addArticleAction()
@@ -51,7 +47,7 @@ class Controller extends ControllerTrait
 				$value = ['titre' => $_POST['titre'], 'chapo' => $_POST['chapo'], 'auteur' => $_POST['auteur'], 'contenu' => $_POST['contenu']];
 					$article = $this->manager->buildArticle($value);
 						$this->manager->ajouterArticle($article);
-							echo $this->getTwig()->render('index.html.twig');
+							echo $this->getTwig()->render('ecrireArticle.html.twig');
 		} else {
 			echo $this->getTwig()->render('ecrireArticle.html.twig');
 		}
@@ -63,7 +59,7 @@ class Controller extends ControllerTrait
 			$value = ['titre' => $_POST['titre'], 'chapo' => $_POST['chapo'], 'auteur' => $_POST['auteur'], 'contenu' => $_POST['contenu'], 'id' => $_POST['id']];
 				$article = $this->manager->buildArticle($value);
 					$this->manager->modificationArticle($article);
-						echo $this->getTwig()->render('index.html.twig');
+						echo $this->getTwig()->render('modificationArticle.html.twig');
 		} else {
 			$article = $this->manager->getArticle();
 				echo $this->getTwig()->render('modificationArticle.html.twig', ['article' => $article]);			
@@ -72,14 +68,11 @@ class Controller extends ControllerTrait
 
 	public function deleteArticleAction()
 	{
-		if (isset($_POST['id'])) {
-			$value = ['id' => $_POST['id']];
+		if (isset($_GET['id'])) {
+			$value = ['id' => $_GET['id']];
 				$article = $this->manager->buildArticle($value);
 					$this->manager->deleteArticle($article);
-					echo '<pre>';
-					var_dump($article);
-					echo '</pre>';
-						echo $this->getTwig()->render('test.html.twig');
+						echo $this->getTwig()->render('index.html.twig');
 		}
 	}
 }

@@ -44,7 +44,7 @@ class ArticleManager
 		while($donnees = $art->fetch()){
 			$article = $donnees;
 		}
-
+		
 		return $article;
 	}
 
@@ -67,7 +67,7 @@ class ArticleManager
 	{
 		$req = $this->db->prepare('
 			UPDATE article
-			SET titre = :titre, chapo = :chapo, contenu = :contenu, auteur = :auteur
+			SET titre = :titre, chapo = :chapo, date_modification = NOW(), contenu = :contenu, auteur = :auteur
 			WHERE id = :id
 			');
 
@@ -82,7 +82,7 @@ class ArticleManager
 
 	public function deleteArticle($article)
 	{
-		$req = $this->db->prepare('DELETE * FROM article WHERE id = :id LIMIT 1');
+		$req = $this->db->prepare('DELETE FROM article WHERE id = :id LIMIT 1');
 
 		$req->bindValue(':id', $article->getId(), \PDO::PARAM_INT);
 
