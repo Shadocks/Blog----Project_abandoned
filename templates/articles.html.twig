@@ -1,18 +1,20 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-
-	{% for article in articles %}
-
-		<div class="container">
+	<div class="container">
+		<h3>Articles postés</h3>
+        <hr />
+		{% for article in articles %}
 			<div class="row">
 				<div class="col-xs-12">
-					<p>{{ article.titre }}</p>
+					<h4>{{ article.titre }}</h4>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
-					<p>{{ article.date_modification }}</p>
+					{% if article.date_modification %}
+                    	<p>Modifié le <strong>{{ article.date_modification}}</strong></p>
+                	{% endif %}
 				</div>
 			</div>
 			<div class="row">
@@ -22,14 +24,13 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
-					<a href="/article/detail?id={{ article.id }}">Voir le détail de l'article</a>
+					<a href="/article/detail/?id={{ article.id }}">Détail de l'article</a>
 				</div>
 			</div>
-		</div>
-		<hr />
-
-	{% endfor %}
-
+			<hr />
+		{% endfor %}
+	</div>
+	<hr />
 {% endblock %}
 
 {% block title %} MBBlog {% endblock %}

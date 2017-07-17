@@ -5,14 +5,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- <link rel="stylesheet" href="assets/css/stylesheet.css"> -->
 		<style type="text/css">
 			body {
 				margin-top: 100px
 			}
-            [class*="col-"] {
-                border: 2px solid black;
-                border-radius: 6px;
+            .info {
+                text-align: justify;
             }
 		</style>
 	<title>{% block title %}{% endblock %}</title>
@@ -20,41 +20,70 @@
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
+
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="navbar" aria-expanded="false" aria-controls="navbar">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">MBBlog</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/articles">Voir les articles</a></li>
-            <li><a href="/article/ajouter">Ecrire un article</a></li>
-          </ul>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/articles">Voir les articles</a></li>
+                <li><a href="/article/ajouter">Ecrire un article</a></li>
+            </ul>
         </div>
+
       </div>
     </nav>
+
     <div class="container">
         <section class="row">
-            <div class="col-xs-12">
                 <div class="col-xs-4">
-                    <img src="http://localhost:9800/templates/image.jpg" alt="moi" />
+                    <img src="./../assets/image.jpg" alt="moi" />
                 </div>
                 <article class="col-xs-8">
-                    <p>Coucou</p>
+                    <h2><strong>Mickaël BARDEAU</strong></h2>
+                    <p>Développeur PHP/symfony en devenir !</p>
+                    <p class="info">
+                        Etudiant à Open Classrooms pour devenir développeur Backend je suis le
+                        parcours Développeur d’application PHP/Symfony. La formation est composée 
+                        de vingt cours et de neuf projets d’étude. Chaque projet est clos par une 
+                        soutenance. Un rendez-vous hebdomadaire en visioconférence avec un mentor 
+                        est là pour suivre notre progression et nous guider. Une soutenance de fin 
+                        de parcours, composée de professionnels du domaine à lieu pour délivrer un 
+                        diplôme d’état enregistré au RNCP.
+                    </p>
+                    <p class="info">
+                        Le site MBBlog est issu d'un des projets de ma formation. Il a été programmé
+                        en PHP en orienté objet avec une architecture MVC. Il utilise le moteur de 
+                        template Twig intégré vias Composer.
+                    </p>
                 </article>
-            </div>
         </section>
+        <hr/>
     </div>
+
 	{% block body %}{% endblock %}
 		
-	{% block form %}{% endblock %}
+	   {% block form %}{% endblock %}
+
+            {% block cv %}{% endblock %}
+
+    <footer class="container">
+        <div class="row">
+            <div class="form-groupe text-center">
+                <a href="https://github.com/Shadocks/" target="blank"> <i class="fa fa-github-alt fa-2x"aria-hidden="true"> </i></a>
+                <a href="https://www.linkedin.com/in/micka%C3%ABl-bardeau-208a46137/" target="blank"> <i class="fa fa-linkedin fa-2x"aria-hidden="true"> </i></a> 
+                <p>Copyright © 2017 MBBlog</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
-	<footer class="container">
-		<p>Copyright © 2017 MBBlog</p>
-	</footer>
 </html>

@@ -17,6 +17,10 @@ class Controller extends ControllerTrait
 		parent::__construct();
 		$this->manager = new ArticleManager($this->getDB());
 		$this->managerC = new CommentaireManager($this->getDB());
+		//echo '<pre>';
+		//var_dump($_SERVER);
+		//var_dump($_GET);
+		//echo '</pre>';
 	}
 
 	public function indexAction()
@@ -36,9 +40,20 @@ class Controller extends ControllerTrait
 
 	public function articleDetailAction()
 	{
-		$article = $this->manager->getArticle();
-			$commentaires = $this->managerC->getCommentaires();
-				echo $this->getTwig()->render('articleDetail.html.twig', ['article' => $article, 'commentaires' => $commentaires]);
+		if (isset($_POST['auteur']) && isset($_POST['contenu']) && isset($_GET['id'])) {
+			$value = ['auteur' => $_POST['auteur'], 'contenu' => $_POST['contenu'], 'articleId' => $_GET['id']];
+				$commentaire = $this->managerC->buildCommentaire($value);
+					$this->managerC->ajouterCommentaire($commentaire);
+						$id = (int) $_GET['id'];
+							$article = $this->manager->getArticle($id);
+								$commentaires = $this->managerC->getCommentaires();
+									echo $this->getTwig()->render('articleDetail.html.twig', ['article' => $article, 'commentaires' => $commentaires]);
+		} elseif (isset($_GET['id'])) {
+			$id = (int) $_GET['id'];
+				$article = $this->manager->getArticle($id);
+					$commentaires = $this->managerC->getCommentaires();
+						echo $this->getTwig()->render('articleDetail.html.twig', ['article' => $article, 'commentaires' => $commentaires]);
+		}
 	}
 
 	public function addArticleAction()
@@ -47,7 +62,9 @@ class Controller extends ControllerTrait
 				$value = ['titre' => $_POST['titre'], 'chapo' => $_POST['chapo'], 'auteur' => $_POST['auteur'], 'contenu' => $_POST['contenu']];
 					$article = $this->manager->buildArticle($value);
 						$this->manager->ajouterArticle($article);
-							echo $this->getTwig()->render('ecrireArticle.html.twig');
+							unset($article);
+								$articles = $this->manager->getArticles();
+									echo $this->getTwig()->render('articles.html.twig', ['articles' => $articles]);
 		} else {
 			echo $this->getTwig()->render('ecrireArticle.html.twig');
 		}
@@ -59,10 +76,14 @@ class Controller extends ControllerTrait
 			$value = ['titre' => $_POST['titre'], 'chapo' => $_POST['chapo'], 'auteur' => $_POST['auteur'], 'contenu' => $_POST['contenu'], 'id' => $_POST['id']];
 				$article = $this->manager->buildArticle($value);
 					$this->manager->modificationArticle($article);
-						echo $this->getTwig()->render('modificationArticle.html.twig');
-		} else {
-			$article = $this->manager->getArticle();
-				echo $this->getTwig()->render('modificationArticle.html.twig', ['article' => $article]);			
+						unset($article);
+							$article = $this->manager->getArticle();
+								$commentaires = $this->managerC->getCommentaires();
+									echo $this->getTwig()->render('articleDetail.html.twig', ['article' => $article, 'commentaires' => $commentaires]);
+		} elseif (isset($_GET['id'])) {
+			$id = (int) $_GET['id'];
+				$article = $this->manager->getArticle($id);
+					echo $this->getTwig()->render('modificationArticle.html.twig', ['article' => $article]);			
 		}		
 	}
 
@@ -72,7 +93,8 @@ class Controller extends ControllerTrait
 			$value = ['id' => $_GET['id']];
 				$article = $this->manager->buildArticle($value);
 					$this->manager->deleteArticle($article);
-						echo $this->getTwig()->render('index.html.twig');
+							$articles = $this->manager->getArticles();
+								echo $this->getTwig()->render('articles.html.twig', ['articles' => $articles]);
 		}
 	}
 }

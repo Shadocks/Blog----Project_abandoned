@@ -26,7 +26,8 @@ class ArticleManager
 		$art = $this->db->query('
 			SELECT id, titre, chapo, date_creation, date_modification, contenu, auteur 
 			FROM article 
-			ORDER BY id DESC
+			ORDER BY id
+			DESC
 		');
 
 		while($donnees = $art->fetch()){
@@ -36,9 +37,14 @@ class ArticleManager
 		return $articles;
 	}
 
-	public function getArticle()
+	public function getArticle($id)
 	{
-		$art = $this->db->prepare('SELECT * FROM article WHERE id = ?');
+		$art = $this->db->prepare('
+			SELECT id, titre, chapo, date_creation, date_modification, contenu, auteur 
+			FROM article 
+			WHERE id = ?
+			');
+
 		$art->execute(array($_GET['id']));
 
 		while($donnees = $art->fetch()){
@@ -82,7 +88,7 @@ class ArticleManager
 
 	public function deleteArticle($article)
 	{
-		$req = $this->db->prepare('DELETE FROM article WHERE id = :id LIMIT 1');
+		$req = $this->db->prepare('DELETE FROM article	WHERE id = :id LIMIT 1');
 
 		$req->bindValue(':id', $article->getId(), \PDO::PARAM_INT);
 

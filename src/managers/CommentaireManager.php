@@ -36,10 +36,10 @@ class CommentaireManager
 	{
 		$req = $this->db->prepare('
 			INSERT INTO commentaire (auteur, date_creation, contenu, Article_id)
-			VALUES (NULL, :auteur, NOW(), :contenu, :articleId)');
+			VALUES (:auteur, NOW(), :contenu, :articleId)
+			');
 
 		$req->bindValue(':auteur', $commentaire->getAuteur(), \PDO::PARAM_STR);
-		$req->bindValue(':datec', $commentaire->getDateCreation(), \PDO::PARAM_STR);
 		$req->bindValue(':contenu', $commentaire->getContenu(), \PDO::PARAM_STR);
 		$req->bindValue(':articleId', $commentaire->getArticleId(), \PDO::PARAM_INT);
 

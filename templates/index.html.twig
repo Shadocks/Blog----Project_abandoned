@@ -1,33 +1,33 @@
 {% extends 'layout.html.twig' %}
 
-{% block body %} 
+{% block title %} MBBlog {% endblock %}
 
-{% endblock %}
-
-{% block title %} 
-	MBBlog 
-{% endblock %}
+{% block body %}{% endblock %}
 
 {% block form %}
 	<div class="container">
+		<h3>Me contacter</h3>
+		<hr />
 		<div class="starter-template">
 			<form method="post" action="">
 				<div class="row">
-					<div class="col-xs-6">
+					<div class="col-xs-12 col-sm-6 col-md-3">
 						<div class="form-group">
-							<label for="nom">Nom</label>
+							<label for="nom">Nom *</label>
 							<input type="text" name="nom" id="nom" required />
 						</div>
 					</div>
-					<div class="col-xs-6">
+					<div class="col-xs-12 col-sm-6 col-md-3">
 						<div class="form-group">
-							<label for="prenom">Prénom</label>
+							<label for="prenom">Prénom *</label>
 							<input type="text" name="prenom" id="prenom" required />
 						</div>
 					</div>
-					<div class="col-xs-6">
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-3">
 						<div class="form-group">
-							<label for="mail">Email</label>
+							<label for="mail">Email *</label>
 							<input type="email" name="mail" id="mail" required />
 						</div>
 					</div>
@@ -43,4 +43,10 @@
 		</div>
 	</div>
 	<hr />
+{% endblock %}
+
+{% block cv %}
+	<div class="container">
+		<a href="./../assets/pdf/cvmickaelbardeau.pdf">Télécharger mon CV au format PDF</a>
+	</div>
 {% endblock %}

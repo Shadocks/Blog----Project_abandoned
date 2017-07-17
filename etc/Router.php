@@ -11,27 +11,27 @@ class Router
 		switch ($_SERVER['REQUEST_URI']) {
 			case $_SERVER['REQUEST_URI'] === '/':
 				$controller = new Controller();
-				return $controller->indexAction();
+					return $controller->indexAction();
 				break;
 			case $_SERVER['REQUEST_URI'] === '/articles':
 				$controller = new Controller();
-				return $controller->articlesAction();
+					return $controller->articlesAction();
 				break;
 			case $_SERVER['REQUEST_URI'] === '/article/ajouter':
 				$controller = new controller();
-				return $controller->addArticleAction();
+					return $controller->addArticleAction();
 				break;
-			case $_SERVER['REQUEST_URI'] === '/article/detail?id=' . $_GET['id']:
-				$controller = new Controller();
-				return $controller->articleDetailAction();
+			case $_SERVER['REQUEST_URI'] === '/article/detail/?id=' . $_GET['id']:
+					$controller = new Controller();
+						return $controller->articleDetailAction();
 				break;
-			case $_SERVER['REQUEST_URI'] === '/article/article/modifier?id=' . $_GET['id']:
+			case $_SERVER['REQUEST_URI'] === '/article/detail/article/modifier/?id=' . $_GET['id']:
 				$controller = new controller();
-				return $controller->updateArticleAction();
+					return $controller->updateArticleAction();
 				break;
-			case $_SERVER['REQUEST_URI'] === '/article/article/delete?id=' . $_GET['id']:
+			case $_SERVER['REQUEST_URI'] === '/article/detail/article/delete/?id=' . $_GET['id']:
 				$controller = new controller();
-				return $controller->deleteArticleAction();
+					return $controller->deleteArticleAction();
 				break;
 		}
 	}

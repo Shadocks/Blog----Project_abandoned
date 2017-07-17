@@ -2,24 +2,28 @@
 
 {% block body %}
     <div class="container">
-            <p>{{ article.titre }}</p>
+            <h3>{{ article.titre }}</h3>
             <p>{{ article.chapo }}</p>
-            <p>{{ article.date_modification }}</p>
             <p>{{ article.contenu }}</p>
-            <p>Rédigé par <strong>{{ article.auteur }}</strong> le <strong>{{ article.date_creation }}</strong></p>
+            <p>Rédigé par <strong>{{ article.auteur }}</strong></p>
+            <p>Date de publication : <strong>{{ article.date_creation }}</strong></p>
                 {% if article.date_modification %}
                     <p>Cet article a été modifié le <strong>{{ article.date_modification}}</strong></p>
                 {% endif %}
-            <a href="article/modifier?id={{ article.id }}">Modifier l'article</a>
-            <a href="article/delete?id={{ article.id }}">Supprimmer l'article</a>
+            <div>
+                <a href="article/modifier/?id={{ article.id }}">Modifier l'article</a>
+                <a href="article/delete/?id={{ article.id }}">Supprimmer l'article</a>
+            </div>
     </div>
     <hr/>
+    <div class="container">
+        <h3>Commentaires</h3>
+        <hr />
         {% for commentaire in commentaires %}
-            <fieldset class="container">
-                <legend>{{ commentaire.auteur }} le {{ commentaire.date_creation }}</legend>
-                    <p>{{ commentaire.contenu }}</p>
-            </fieldset>
+                <h5>{{ commentaire.auteur }} le {{ commentaire.date_creation }}</h5>
+                    <p>{{ commentaire.contenu }}</p><br />
     	{% endfor %}
+    </div>
     <hr/>
     <h4 class="container">Laissez un commentaire</h4>
     <div class="container">

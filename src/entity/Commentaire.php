@@ -1,12 +1,14 @@
 <?php
 
+namespace Lib\entity;
+
 /**
 * Classe définissant un commentaire.
 * @author Mickael B.
 * @version 1.0
 */
 
-class Article
+class Commentaire
 {
 	protected $id;
 	protected $auteur;
@@ -31,7 +33,7 @@ class Article
 */
 	public function hydrate(array $commentaire)
 	{
-		foreach ($article as $key => $value) {
+		foreach ($commentaire as $key => $value) {
 			$method = 'set'.ucfirst($key);
 			if (method_exists($this, $method)) {
 				$this->$method($value);
@@ -48,22 +50,22 @@ class Article
 
 	public function getAuteur()
 	{
-		return $this->_auteur;
+		return $this->auteur;
 	}
 
 	public function getDateCreation()
 	{
-		return $this->_dateCreation;
+		return $this->dateCreation;
 	}
 
 	public function getContenu()
 	{
-		return $this->_contenu;
+		return $this->contenu;
 	}
 
 	public function getArticleId()
 	{
-		return $this->_articleId;
+		return $this->articleId;
 	}
 
 
@@ -77,25 +79,25 @@ class Article
 
 	public function setAuteur($auteur)
 	{
-		if (is_string($auteur) && (strlen($ateur) <= 255)) {
-			$this->_auteur = $auteur;
+		if (is_string($auteur) && (strlen($auteur) <= 255)) {
+			$this->auteur = $auteur;
 		}
 	}
 
 	public function setDateCreation($dateCreation)
 	{
-		$this->_dateCreation = $dateCreation;
+		$this->dateCreation = $dateCreation;
 	}
 
 	public function setContenu($contenu)
 	{
 		if (is_string($contenu)) {
-			$this->_contenu = $contenu;
+			$this->contenu = $contenu;
 		}
 	}
 
 	public function setArticleId($articleId)
 	{
-		return $this->_articleId = $articleId;
+		return $this->articleId = (int) $articleId;
 	}
 }
